@@ -29,8 +29,9 @@
      * Objective: iterator function should take in an array and an accumulator, and then it should sum
      * up each item in the array and return the total value as the accumulator
      */
-    function iterator(item, accumulator) {
-
+    function iterator(item, sum) {
+        accumulator += item;
+        return sum;
     }
 var lab = {
         //Array functions
@@ -47,7 +48,10 @@ var lab = {
          * Objective: multiply each number in the array by 2 and return the modified array
          */
         foreach: function(arg) {
-
+            for(var i = 0; i < arg.length; i++) {
+                arg[i] = arg[i] *2;
+            } 
+            return arg;
         },
         /**
          * the map method should iterate over the array and perform a function on all the array items
@@ -55,6 +59,13 @@ var lab = {
          * Objective: multiple each number in the array by 2 and return the new array
          */
         map: function(arg) {
+            var results = [];
+            for (var i = 0; i < arg.length; i++) {
+            results.push(arg[i] * 2)
+	            
+
+//DIDNT FINISH
+
 
         },
         /**
@@ -63,6 +74,13 @@ var lab = {
          * Objective: return array of values that are > 30
          */
         filter: function(arg, min) {
+          var results = [];
+          for (var i = 0; i< arg.length; i++) {
+              if (arg[i] > min) {
+                  results.push(arg[1]);
+              }
+          }  
+           return results;
 
         },
         /**
@@ -70,6 +88,7 @@ var lab = {
          * this means the array does not contain any items within it that themselves an array
          */
         concatAll: function(arg) {
+         
 
         },
         /**
@@ -80,6 +99,9 @@ var lab = {
          * Objective: return the sum of all items in the array
          */
         reduce: function(list, iterator, accumulator) {
+            
+           for (var i = 0; i <)
+
 
         },
 
@@ -121,12 +143,10 @@ var lab = {
 
 //FOR TESTING PURPOSES, DO NOT CHANGE
 function test() {
-    var correctCount = 0;
     (function() {
         var result = lab.identity(arr);
         if (result === arr) {
             console.log('Identity Function: Correct');
-            correctCount++;
         } else {
             console.log('Identity Function: Incorrect');
         }
@@ -144,7 +164,6 @@ function test() {
         })();
         if (resultValue) {
             console.log('ForEach Function: Correct');
-            correctCount++;
         } else {
             console.log('ForEach Function: Incorrect');
         }
@@ -162,7 +181,6 @@ function test() {
         })();
         if (resultValue) {
             console.log('Map Function: Correct');
-            correctCount++;
         } else {
             console.log('Map Function: Incorrect');
         }
@@ -180,7 +198,6 @@ function test() {
         })();
         if (resultValue) {
             console.log('Filter Function: Correct');
-            correctCount++;
         } else {
             console.log('Filter Function: Incorrect');
         }
@@ -198,7 +215,6 @@ function test() {
        })();
        if (resultValue) {
            console.log('ConcatAll Function: Correct');
-           correctCount++;
        } else {
            console.log('ConcatAll Function: Incorrect');
        }
@@ -208,7 +224,6 @@ function test() {
        var result = lab.reduce(arr, iterator, accumulator);
        if (result === solution) {
            console.log('Reduce Function: Correct');
-           correctCount++;
        } else {
            console.log('Reduce Function: Incorrect');
        }
@@ -217,7 +232,6 @@ function test() {
         var result = lab.hasOwnProperty(obj, 'three');
         if (result) {
             console.log('HasOwnProperty Function: Correct');
-            correctCount++;
         } else {
             console.log('HasOwnProperty Function: Incorrect');
         }
@@ -235,7 +249,6 @@ function test() {
         })();
         if (resultValue) {
             console.log('ObjKeys Function: Correct');
-            correctCount++;
         } else {
             console.log('ObjKeys Function: InCorrect');
         }
@@ -251,7 +264,6 @@ function test() {
         var result = lab.forInObj(copyObj);
         if (JSON.stringify(solution) === JSON.stringify(result)) {
             console.log('ForInObj Function: Correct');
-            correctCount++;
         } else {
             console.log('ForInObj Function: InCorrect');
         }
@@ -265,10 +277,9 @@ function test() {
        var result = lab.remove(obj, 30);
        if (JSON.stringify(solution) === JSON.stringify(result)) {
            console.log('Remove Function: Correct');
-           correctCount++;
        } else {
            console.log('Remove Function: Incorrect');
        }
     })();
-    console.log('# of test\s complete: ' + correctCount + '/10');
+    
 }
